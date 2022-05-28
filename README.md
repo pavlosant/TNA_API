@@ -57,10 +57,13 @@ Type or paste the record ID to the textbox (for example use "251cd289-2f0d-48fc-
 This will post your record ID to the server and call the NAT API using GET to retrieve the record for that ID if it exists in the NAT database. \
 If a record is available it will be saved to the ORM database of django and you
 will then be redirected to
-`http://127.0.0.1:8000/records/{recordID}/` where you will see a page with the record ID and the corresponding information about that record (following the above rules). 
+`http://127.0.0.1:8000/records/{recordID}/` where you will see a page with the record ID and the corresponding information about that record (following the above rules). \
+
 For the example record ID of "251cd289-2f0d-48fc-8018-032400b67a56" you will be redirected to 
 `http://127.0.0.1:8000/records/251cd289-2f0d-48fc-8018-032400b67a56/`
 where you will see the title of the record: `Titanic and Lusitania disasters.`
+
+![Alt text](img/API_screenshot.png?raw=true "Title")
 
 
 Click on the `Home` button on the top right of the screen to return to the home page where you can try the app with more record IDs if you wish. 
