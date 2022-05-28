@@ -3,8 +3,8 @@
 
 
 ## Description
-This Django app allows the user to get a record from The National Archives (TNA) API using record ID. It's assumed the user already has the record ID. 
-A user types the record ID into a textbox and then the app gets the corresponding record from the TAN API and presents the user information about that record based on some predefined rules:
+This Django app allows the user to get a record from The National Archives (TNA) API using a record ID. It's assumed the user already knows the record ID. 
+A user types the record ID into a textbox and then the app gets the corresponding record from the TNA API and presents the user information about that record based on some predefined rules:
 1.  Given a valid record ID is specified when the client is run and the returned record’s ‘title’ is not null Then the record’s ‘title’ should be displayed
 2. Given a valid record ID is specified when the client is run and the returned record’s ‘title’ is null and the returned record’s ‘scopeContent. description’ is not null then the record’s ‘scopeContent. description’ should be displayed
 3. Given a valid record ID is specified
@@ -22,16 +22,19 @@ When the client is run
 Then a message ‘no record found’ should be displayed
 
 ## Getting Started
-This Django app requires some libraries and they are listed in the file requirements.txt. 
+This Django app requires additional python libraries which are listed in the file requirements.txt. 
 Please follow the installation steps below to install the app using a virtual environment. 
 
 ## Main Dependencies
+
 Python 3 (Tested with Python 3.8.2) \
-Django 
+Django 4 (Tested with Django v 4.0.4)
 
 ## Installation
 
 ### Install Django and python dependencies
+Open a linux or mac terminal and type the following:
+
 ```
 mkdir TNA
 cd TNA
@@ -51,8 +54,23 @@ After finishing the above installation steps run the Django server from within t
 #make sure you are in the TNA directory (cd TNA)
 python manage.py runserver
 ```
+You will see something similar to the following in your terminal:
+```
+Watching for file changes with StatReloader
+Performing system checks...
 
-Go to `http://127.0.0.1:8000/` or `http://localhost:8000/` \
+System check identified no issues (0 silenced).
+May 28, 2022 - 13:22:13
+Django version 4.0.4, using settings 'tnaapi.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+
+Open your favourite web browser and go to `http://127.0.0.1:8000/` or `http://localhost:8000/` \
+
+The home page of the django web app will be displayed.
+![Screenshot](img/home.png?raw=true "Screenshot of home page")
+
 Type or paste the record ID to the textbox (for example use "251cd289-2f0d-48fc-8018-032400b67a56", without the quotes) and press Enter
 This will post your record ID to the server and call the NAT API using GET to retrieve the record for that ID if it exists in the NAT database. \
 If a record is available it will be saved to the ORM database of django and you
