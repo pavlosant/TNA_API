@@ -63,7 +63,7 @@ For the example record ID of "251cd289-2f0d-48fc-8018-032400b67a56" you will be 
 `http://127.0.0.1:8000/records/251cd289-2f0d-48fc-8018-032400b67a56/`
 where you will see the title of the record: `Titanic and Lusitania disasters.`
 
-![Alt text](img/API_screenshot.png?raw=true "Title")
+![Screenshot](img/API_screenshot.png?raw=true "Screenshot of example execution")
 
 
 Click on the `Home` button on the top right of the screen to return to the home page where you can try the app with more record IDs if you wish. 
