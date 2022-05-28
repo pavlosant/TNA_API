@@ -71,13 +71,14 @@ Open your favourite web browser and go to `http://127.0.0.1:8000/` or `http://lo
 The home page of the django web app will be displayed.
 ![Screenshot](img/home.png?raw=true "Screenshot of home page")
 
-Type or paste the record ID to the textbox (for example use "251cd289-2f0d-48fc-8018-032400b67a56", without the quotes) and press Enter
-This will post your record ID to the server and call the NAT API using GET to retrieve the record for that ID if it exists in the NAT database. \
-If a record is available it will be saved to the ORM database of django and you
-will then be redirected to
-`http://127.0.0.1:8000/records/{recordID}/` where you will see a page with the record ID and the corresponding information about that record (following the above rules). \
+Type or paste the record ID to the textbox (for example use "251cd289-2f0d-48fc-8018-032400b67a56", without the quotes) and press Enter. \
 
-For the example record ID of "251cd289-2f0d-48fc-8018-032400b67a56" you will be redirected to 
+This will post your record ID to the server and call the NAT API using GET to retrieve the record for that ID if it exists in the NAT database. \
+If a record is available it will be saved in the ORM Django database and you
+will then be redirected to
+`http://127.0.0.1:8000/records/{recordID}/` where you will see a page with the record ID and the corresponding information about that record (following the rules mentioned in the Description section of this document). 
+
+For example, for the record ID of "251cd289-2f0d-48fc-8018-032400b67a56" you will be redirected to 
 `http://127.0.0.1:8000/records/251cd289-2f0d-48fc-8018-032400b67a56/`
 where you will see the title of the record: `Titanic and Lusitania disasters.`
 
@@ -93,7 +94,7 @@ python manage.py test
 
 ```
 ## Assumptions
-As the user requirements were specifically asking to get records from the NAT API using the recordID I did not implement a search functionality with a text query. 
+As the user requirements were specifically asking to get records from the NAT API using the recordID I did not implement a search functionality with a text query. \
 I initially assumed all recordIDs would be uuid types but after running some more examples on the NAT API I noticed some records had plain strings as IDs so I updated the model accordingly to accept strings for the id field.
 
 
