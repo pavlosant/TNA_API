@@ -41,7 +41,7 @@ pip install --upgrade pip #this is to update to latest version because earlier v
 python3 -m venv venv 
 source venv/bin/activate
 pip install -r requirements.txt
-python manage.py migrate
+python manage.py migrate # required to build database models before running the server
 ```
 
 ## Execution
@@ -66,7 +66,7 @@ where you will see the title of the record: `Titanic and Lusitania disasters.`
 ![Screenshot](img/API_screenshot.png?raw=true "Screenshot of example execution")
 
 
-Click on the `Home` button on the top right of the screen to return to the home page where you can try the app with more record IDs if you wish. 
+Click on the `Home` button on the top left of the screen to return to the home page where you can try the app with more record IDs if you wish. 
 
 ## Testing 
 The unittest python package for tests was used and the tests can be executed using:
@@ -74,6 +74,12 @@ The unittest python package for tests was used and the tests can be executed usi
 python manage.py test
 
 ```
+## Assumptions
+As the user requirements were specifically asking to get records from the NAT API using the recordID I did not implement a search functionality with a text query. 
+I initially assumed all recordIDs would be uuid types but after running some more examples on the NAT API I noticed some records had plain strings as IDs so I updated the model accordingly to accept strings for the id field.
+
+
+
 ## Authors
 `Pavlos Antoniou @pavlosant`
 
