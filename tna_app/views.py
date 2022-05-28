@@ -39,19 +39,18 @@ def get_id(request):
             scopeContent_description=scopeContent_description,
             citableReference=citableReference,
         )
-        # newrecord.save()
+
         newrecord, created = Record.objects.get_or_create(
             id=id,
             title=title,
             scopeContent_description=scopeContent_description,
             citableReference=citableReference,
         )
-        # return render(request, "record_detail.html", {"record": newrecord})
+
         record_detail(request, id)
         return redirect("record_detail", id=id)
 
     elif response.status_code == 204:
-        print("INVALID")
         return render(request, "notfound.html")
 
     return render(
@@ -65,11 +64,7 @@ def get_id(request):
 
 def record_detail(request, id):
 
-    print(id)
-    # record = Record.objects.get(id=id)
     record = get_object_or_404(Record, pk=id)
-    print(record)
-
     display_record = record_display_logic(record)
 
     return render(request, "record_detail.html", context={"record": display_record})
