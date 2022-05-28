@@ -4,20 +4,17 @@
 
 <div class="container">
     <br><br>
-    <div class="row">
-        <div class="col-md-5">
-            <br>
-            <br><br>
-            <h3 class="card-title text-center ">{{ record.id }}</h3>
-        </div>
-        <div class="col-md-7 shadow-lg p-3 mb-5 bg-white rounded">
-            <h1 class="my-3">Title</h1>
-            <p class="lead">{{ record.title }}</p>
-            <h1 class="my-3"> Details</h1>
-            <ul>
-                <li>{{ record.scopeContent_description }}</li>
-                <li>{{ record.citableReference }}</li>
-            </ul>
+    <div class="card">
+        <div class="card-content">
+            <div class="content">
+
+                <h3 class="card-title text-center ">{{ record.id }}</h3>
+                <hr>
+                <p class="lead">{{ record.title|default_if_none:"" }}</p>
+                <p>{{ record.scopeContent_description|default_if_none:"" }}</p>
+                <p>{{ record.citableReference|default_if_none:"" }}</p>
+                <p>{{ record.message_to_user|default_if_none:"" }}</p>
+            </div>
         </div>
     </div>
 </div>

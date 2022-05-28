@@ -2,6 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 import requests
 from .models import Record
+from django.shortcuts import get_object_or_404
+
 
 # Create your views here.
 
@@ -44,8 +46,9 @@ def get_id(request):
             scopeContent_description=scopeContent_description,
             citableReference=citableReference,
         )
-        return render(request, "record_detail.html", {"record": newrecord})
-        # record_detail(request, id)
+        # return render(request, "record_detail.html", {"record": newrecord})
+        record_detail(request, id)
+        return redirect("record_detail", id=id)
 
     elif response.status_code == 204:
         print("INVALID")
@@ -61,8 +64,39 @@ def get_id(request):
 
 
 def record_detail(request, id):
-    print("villos")
+
     print(id)
-    record = Record.objects.get(id=id)
+    # record = Record.objects.get(id=id)
+    record = get_object_or_404(Record, pk=id)
     print(record)
-    return render(request, "record_detail.html", {"record": record})
+
+    display_record = record_display_logic(record)
+
+    return render(request, "record_detail.html", context={"record": display_record})
+
+
+# choose which fields to display based on if they are Null or not
+def record_display_logic(record):
+    if record.title is not None:
+        newrecord = Record(id=record.id, title=record.title)
+
+    if record.title is None:
+        if record.scopeContent_description is not None:
+            newrecord = Record(
+                id=record.id, scopeContent_description=record.scopeContent_description
+            )
+
+    if record.title is None:
+        if record.scopeContent_description is None:
+            if record.citablereference is not None:
+                newrecord = Record(
+                    id=record.id, citablereference=record.citablereference
+                )
+    if record.title is None:
+        if record.scopeContent_description is None:
+            if record.citablereference is None:
+                newrecord = Record(
+                    id=record.id, message_to_user="not sufficient information"
+                )
+
+    return newrecord

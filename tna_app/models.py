@@ -7,3 +7,4 @@ class Record(models.Model):
     title = models.CharField(max_length=50, blank=True, null=True)
     scopeContent_description = models.CharField(max_length=1000, blank=True, null=True)
     citableReference = models.CharField(max_length=1000, blank=True, null=True)
+    message_to_user = models.CharField(max_length=50, blank=True, null=True)
