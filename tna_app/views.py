@@ -5,51 +5,46 @@ from .models import Record
 from django.shortcuts import get_object_or_404
 
 
-# Create your views here.
-
+# API url
 url = "http://discovery.nationalarchives.gov.uk/API/records/v1/details/"
 
 
-def home_page(request):
-    return render(request, "home.html")
-
-
+# initial view where user can type in the recordID
 def get_id(request):
 
     id = request.POST.get("record_text", "")
-
-    print(id)
-
+    # build API url to get record
     url = "http://discovery.nationalarchives.gov.uk/API/records/v1/details/%s" % id
-    print(url)
 
+    # GET
     response = requests.get(url)
+    # GET successfuly received status 200, record is there
     if response.status_code == 200:
         data = response.json()
-
         title = data["title"]
         scopeContent_description = data["scopeContent"]["description"]
         citableReference = data["citableReference"]
         print(title)
         print(scopeContent_description)
         print(citableReference)
+        # create  Record object from Models
         newrecord = Record(
             id=id,
             title=title,
             scopeContent_description=scopeContent_description,
             citableReference=citableReference,
         )
-
+        # Save record to Model database
         newrecord, created = Record.objects.get_or_create(
             id=id,
             title=title,
             scopeContent_description=scopeContent_description,
             citableReference=citableReference,
         )
-
+        # Redirect to display record details
         record_detail(request, id)
         return redirect("record_detail", id=id)
-
+    # if recordID is not found/ invalid record ID
     elif response.status_code == 204:
         return render(request, "notfound.html")
 
@@ -63,10 +58,12 @@ def get_id(request):
 
 
 def record_detail(request, id):
-
+    # get record from the database
     record = get_object_or_404(Record, pk=id)
+    # apply logic for what fields of the record to display to user and save fields to display
+    #  into a new Record object
     display_record = record_display_logic(record)
-
+    # render this new object showing only the appropriate fields as per instructions
     return render(request, "record_detail.html", context={"record": display_record})
 
 
