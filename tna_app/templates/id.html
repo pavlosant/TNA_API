@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="is-large">
+    <div class="hero-body">
+
+        <p>Please type the record ID and press enter </p>
+        <form method="POST">
+            <input name="record_text" id="id_new_item" placeholder="recordID" />
+            {% csrf_token %}
+
+        </form>
+    </div>
+</section>
+{% endblock %}
