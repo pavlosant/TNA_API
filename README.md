@@ -88,14 +88,14 @@ where you will see the title of the record: `Titanic and Lusitania disasters.`
 Click on the `Home` button on the top left of the screen to return to the home page where you can try the app with more record IDs if you wish. 
 
 ## Testing 
-The unittest python package for tests was used and the tests can be executed using:
+The unittest python package for tests was used and the tests available can be executed using:
 ```
 python manage.py test
 
 ```
 ## Assumptions
 As the user requirements were specifically asking to get records from the NAT API using the recordID I did not implement a search functionality with a text query. \
-I initially assumed all recordIDs would be uuid types but after running some more examples on the NAT API I noticed some records had plain strings as IDs so I updated the model accordingly to accept strings for the id field.
+From the examples given in the user requirements I initially assumed all recordIDs would have `uuid` type but after running some more examples on the NAT API I noticed some records had alphanumerical strings as IDs. I then updated the model accordingly to accept strings for the id field.
 
 
 
