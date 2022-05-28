@@ -66,12 +66,12 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-Open your favourite web browser and go to `http://127.0.0.1:8000/` or `http://localhost:8000/` \
+Open your favourite web browser and go to `http://127.0.0.1:8000/` or `http://localhost:8000/` 
 
 The home page of the django web app will be displayed.
 ![Screenshot](img/home.png?raw=true "Screenshot of home page")
 
-Type or paste the record ID to the textbox (for example use "251cd289-2f0d-48fc-8018-032400b67a56", without the quotes) and press Enter. \
+Type or paste the record ID to the textbox (for example use "251cd289-2f0d-48fc-8018-032400b67a56", without the quotes) and press Enter. 
 
 This will post your record ID to the server and call the NAT API using GET to retrieve the record for that ID if it exists in the NAT database. \
 If a record is available it will be saved in the ORM Django database and you
