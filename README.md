@@ -1,4 +1,4 @@
-# Django app to get records from NAT API 
+# Django app to get records from TNA API 
 
 
 
@@ -39,10 +39,10 @@ Open a linux or mac terminal and type the following:
 mkdir TNA
 cd TNA
 git init
-git pull https://github.com/pavlosant/TNA_API.git
-pip install --upgrade pip #this is to update to latest version because earlier versions on mac failed to install the cryptography package 
+git pull https://github.com/pavlosant/TNA_API.git 
 python3 -m venv venv 
 source venv/bin/activate
+pip install --upgrade pip #this is to update to latest version because earlier versions on mac failed to install the cryptography package
 pip install -r requirements.txt
 python manage.py migrate # required to build database models before running the server
 ```
